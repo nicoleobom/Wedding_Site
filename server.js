@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const routes = require('./routes');
 
 const PORT = process.env.PORT || 4000;
 
@@ -16,3 +17,8 @@ connection.once('open', function() {
     console.log('MongoDB database connection has been established successfully.');
 });
 
+app.use(routes);
+
+app.listen(PORT, function() {
+    console.log('Server is running on port: ' + PORT);
+})
